@@ -1,0 +1,660 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>KONVERSI - Preview Beranda</title>
+  <style>
+    /* Reset & Base Styles (Embedded, no external dependencies) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 24px;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 22px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .logo .ez {
+      color: #4f46e5;
+    }
+    .logo .pdf {
+      color: #f43f5e;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 600;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #0f172a;
+    }
+    .header-ctas {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-support {
+      background-color: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-pro {
+      background: linear-gradient(to right, #f43f5e, #e11d48);
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(244, 63, 94, 0.2);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(to bottom, #eff6ff, #ffffff);
+      padding: 64px 24px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-flex;
+      background-color: #ffe4e6;
+      color: #9f1239;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid #fecdd3;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(to right, #f43f5e, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 32px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 6px 6px 6px 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #334155;
+    }
+    .search-box button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Ad Banner Slot */
+    .ad-banner {
+      max-width: 970px;
+      margin: 24px auto;
+      background: linear-gradient(to right, #f1f5f9, #e2e8f0);
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+      text-align: center;
+    }
+    .ad-badge {
+      position: absolute;
+      top: 4px;
+      left: 12px;
+      font-size: 8px;
+      font-weight: bold;
+      color: #94a3b8;
+      letter-spacing: 1px;
+    }
+    .ad-content {
+      font-size: 12px;
+      color: #475569;
+      font-weight: 500;
+    }
+    .ad-link {
+      color: #f43f5e;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    /* Tools Grid */
+    .tools-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .section-title p {
+      color: #64748b;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background-color: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    .card-jpg:hover { border-color: #f43f5e; box-shadow: 0 10px 20px rgba(244, 63, 94, 0.08); }
+    .card-png:hover { border-color: #f97316; box-shadow: 0 10px 20px rgba(249, 115, 22, 0.08); }
+    .card-merge:hover { border-color: #6366f1; box-shadow: 0 10px 20px rgba(99, 102, 241, 0.08); }
+    .card-split:hover { border-color: #3b82f6; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.08); }
+    .card-pdf-img:hover { border-color: #10b981; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.08); }
+    .card-compress:hover { border-color: #f59e0b; box-shadow: 0 10px 20px rgba(245, 158, 11, 0.08); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background-color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .hot-badge {
+      background-color: #ffe4e6;
+      color: #e11d48;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    .card-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .card-body p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    .card-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .tag-convert { background-color: #fff1f2; color: #be123c; }
+    .tag-edit { background-color: #e0e7ff; color: #4338ca; }
+    .tag-optimize { background-color: #fef3c7; color: #b45309; }
+    .cta-text {
+      color: #4f46e5;
+    }
+
+    /* Stats Section */
+    .stats {
+      background-color: #0f172a;
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .stats-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .stat-item h3 {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fb7185;
+      margin-bottom: 4px;
+    }
+    .stat-item p {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-item span {
+      display: block;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    .faq-item {
+      background-color: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      padding: 20px;
+    }
+    .faq-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+      padding: 64px 24px 32px;
+      text-align: center;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: left;
+      margin-bottom: 48px;
+    }
+    .footer-col h4 {
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    .footer-col p {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #64748b;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: white;
+    }
+    .copyright {
+      border-top: 1px solid #1e293b;
+      padding-top: 24px;
+      font-size: 12px;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <span class="ez">EZ</span><span class="pdf">PDF</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Semua Alat</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Kontak Iklan</a></li>
+      </ul>
+      <div class="header-ctas">
+        <button class="btn-support">❤️ Dukung</button>
+        <button class="btn-pro">Pro (Gratis)</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <span class="badge">🛡️ 100% Offline & Privat di Browser Anda</span>
+      <h1>Konversi Gambar ke PDF <br><span>Lebih Cepat & Tanpa Upload</span></h1>
+      <p>Proses JPG ke PDF, PNG ke PDF, kompres gambar, gabung & pecah PDF instan langsung di browser Anda. Privasi file terjaga 100%.</p>
+      
+      <div class="search-box">
+        <input type="text" placeholder="Cari alat konversi PDF kustom...">
+        <button>Cari</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Banner Placement (Horizontal) -->
+  <div class="ad-banner">
+    <div class="ad-badge">IKLAN / SPONSOR</div>
+    <div class="ad-content">
+      Ingin bisnis Anda dikunjungi jutaan pengguna aktif bulanan? <span class="ad-link">Pasang Iklan Banner Anda di Sini!</span> Hubungi sales@konversi.io
+    </div>
+  </div>
+
+  <!-- Tools Section -->
+  <section class="tools-section">
+    <div class="section-title">
+      <h2>Alat Pengolah Dokumen Populer</h2>
+      <p>Pilih alat di bawah untuk memulai konversi tanpa batasan kapasitas file.</p>
+    </div>
+
+    <div class="grid">
+      <!-- JPG ke PDF -->
+      <div class="card card-jpg">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #f43f5e; background-color: #fff1f2;">🖼️</div>
+          <span class="hot-badge">Populer 🔥</span>
+        </div>
+        <div class="card-body">
+          <h3>JPG ke PDF</h3>
+          <p>Ubah banyak file gambar JPG Anda menjadi satu dokumen PDF rapi dengan sekali klik.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-convert">Konversi</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+
+      <!-- PNG ke PDF -->
+      <div class="card card-png">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #f97316; background-color: #fff7ed;">📄</div>
+        </div>
+        <div class="card-body">
+          <h3>PNG ke PDF</h3>
+          <p>Ubah format gambar PNG transparan Anda menjadi file halaman PDF resolusi tinggi.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-convert">Konversi</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+
+      <!-- Gabung PDF -->
+      <div class="card card-merge">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #6366f1; background-color: #e0e7ff;">📚</div>
+          <span class="hot-badge">Populer 🔥</span>
+        </div>
+        <div class="card-body">
+          <h3>Gabungkan PDF</h3>
+          <p>Gabungkan beberapa file PDF terpisah menjadi satu dokumen baru yang teratur.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-edit">Edit PDF</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+
+      <!-- Pecah PDF -->
+      <div class="card card-split">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #3b82f6; background-color: #eff6ff;">✂️</div>
+        </div>
+        <div class="card-body">
+          <h3>Pecahkan PDF</h3>
+          <p>Ekstrak halaman tertentu dari PDF Anda atau simpan halaman secara terpisah.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-edit">Edit PDF</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+
+      <!-- PDF ke JPG -->
+      <div class="card card-pdf-img">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #10b981; background-color: #ecfdf5;">📁</div>
+          <span class="hot-badge">Populer 🔥</span>
+        </div>
+        <div class="card-body">
+          <h3>PDF ke Gambar</h3>
+          <p>Ubah seluruh lembaran halaman PDF menjadi file gambar format JPG yang tajam.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-convert">Konversi</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+
+      <!-- Kompres Gambar -->
+      <div class="card card-compress">
+        <div class="card-header">
+          <div class="icon-wrapper" style="color: #f59e0b; background-color: #fef3c7;">🗜️</div>
+        </div>
+        <div class="card-body">
+          <h3>Kompres Gambar</h3>
+          <p>Kurangi ukuran file JPG/PNG hingga 90% dengan mempertahankan kualitas visual.</p>
+        </div>
+        <div class="card-footer">
+          <span class="tag tag-optimize">Optimasi</span>
+          <span class="cta-text">Mulai &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ads Square (Mocks) -->
+  <div style="max-width: 1200px; margin: 0 auto 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 0 24px;">
+    <div style="width: 300px; height: 250px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border: 1px dashed #cbd5e1; border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+      <div style="position: absolute; top: 4px; left: 12px; font-size: 8px; font-weight: bold; color: #94a3b8; letter-spacing: 1px;">SPACE IKLAN / SPONSOR</div>
+      <div style="margin: auto 0; font-size: 12px; color: #475569; font-weight: 500;">
+        <span style="background: #fee2e2; color: #ef4444; font-size: 10px; font-weight: bold; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 8px;">HIGH CPM SLOT</span>
+        <br>Pasang iklan produk digital Anda di sini untuk mendapatkan konversi melimpah.
+      </div>
+      <div style="font-size: 11px; font-weight: bold; color: #4f46e5;">sales@konversi.io</div>
+    </div>
+
+    <div style="width: 300px; height: 250px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); border: 1px dashed #cbd5e1; border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+      <div style="position: absolute; top: 4px; left: 12px; font-size: 8px; font-weight: bold; color: #94a3b8; letter-spacing: 1px;">SPACE IKLAN / SPONSOR</div>
+      <div style="margin: auto 0; font-size: 12px; color: #475569; font-weight: 500;">
+        Situs ini dikunjungi ribuan pengguna aktif harian dari kalangan mahasiswa, pekerja kantoran, & desainer.
+      </div>
+      <div style="font-size: 11px; font-weight: bold; color: #4f46e5;">ads.konversi.io</div>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <h3>0%</h3>
+        <p>Risiko Kebocoran</p>
+        <span>Semua proses lokal di browser Anda</span>
+      </div>
+      <div class="stat-item">
+        <h3>&lt; 3 Detik</h3>
+        <p>Kecepatan Rata-rata</p>
+        <span>Pemrosesan instan secepat kilat</span>
+      </div>
+      <div class="stat-item">
+        <h3>100%</h3>
+        <p>Gratis Selamanya</p>
+        <span>Tanpa limit file / watermark</span>
+      </div>
+      <div class="stat-item">
+        <h3>5+</h3>
+        <p>Alat Tersedia</p>
+        <span>Konversi lengkap siap pakai</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="section-title">
+      <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      <p>Hal umum yang perlu Anda ketahui tentang pemrosesan lokal gratis di KONVERSI.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Apakah file saya benar-benar aman?</h4>
+      <p>Sangat aman! KONVERSI memproses semua file Anda menggunakan javascript lokal secara langsung di browser Anda. Tidak ada data atau file yang di-upload ke server cloud eksternal kami.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Mengapa situs KONVERSI ini gratis?</h4>
+      <p>Kami memonetisasi situs ini menggunakan iklan non-intrusif (seperti Google AdSense). Dengan demikian, kami dapat membiayai hosting performa tinggi dan pengembangan fitur agar tetap gratis selamanya untuk Anda.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4 style="font-size: 18px; margin-bottom: 12px;"><span style="color: #4f46e5;">EZ</span><span style="color: #f43f5e;">PDF</span></h4>
+        <p>Aplikasi utilitas konversi gambar dan pengolah dokumen PDF berkecepatan tinggi, gratis, dan privat 100% di browser Anda.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Alat Konversi</h4>
+        <ul>
+          <li><a href="#">JPG ke PDF</a></li>
+          <li><a href="#">PNG ke PDF</a></li>
+          <li><a href="#">PDF ke Gambar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Alat PDF</h4>
+        <ul>
+          <li><a href="#">Gabungkan PDF</a></li>
+          <li><a href="#">Pecahkan PDF</a></li>
+          <li><a href="#">Kompres Gambar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sponsor & Iklan</h4>
+        <p>Hubungi tim penawaran iklan kami di email resmi <strong style="color: white;">sales@konversi.io</strong> untuk memulai pemasangan banner.</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2026 KONVERSI. Seluruh Hak Cipta Dilindungi Undang-Undang. Dibuat dengan ❤️ di Indonesia.
+    </div>
+  </footer>
+
+</body>
+</html>

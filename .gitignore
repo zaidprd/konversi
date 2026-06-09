@@ -1,0 +1,10 @@
+# Folder dependensi
+node_modules/
+dist/
+build/
+
+# Konfigurasi dan file sensitif
+.env
+.DS_Store
+*.log
+.codex/

@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Dash border styling for drag-and-drop */
+.border-3 {
+  border-width: 3px;
+}
