@@ -1,8 +1,0 @@
-model = "gpt-5.5"
-model_provider = "joinbareng"
-
-[model_providers.joinbareng]
-name = "JoinBareng"
-base_url = "https://joinbareng.com/api/ai-proxy-v2/v1"
-wire_api = "chat"
-env_key = "sk-jb-1675ea934fb4900454736a356720a250"

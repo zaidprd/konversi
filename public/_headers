@@ -1,0 +1,15 @@
+﻿# Security headers (semua halaman)
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+# Cache static assets 1 tahun (immutable hash)
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML tidak boleh di-cache (deploy baru langsung terlihat)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

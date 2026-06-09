@@ -1,19 +1,32 @@
-// Konfigurasi brand terpusat - ubah di sini untuk rebrand seluruh aplikasi.
+﻿// Konfigurasi brand terpusat - ubah di sini untuk rebrand seluruh aplikasi.
+const env = import.meta.env;
 
 export const BRAND = {
-  name: 'KONVERSI',
-  tagline: 'Konversi JPG, PNG & PDF Online - Gratis, Cepat & Privat',
-  domain: 'konversi.io',
+  name: env.VITE_BRAND_NAME || 'KONVERSI',
+  tagline: env.VITE_BRAND_TAGLINE || 'Konversi JPG, PNG & PDF Online - Gratis, Cepat & Privat',
+  domain: env.VITE_BRAND_DOMAIN || 'konversi.io',
+  url: env.VITE_BRAND_URL || 'https://konversi.io',
   email: {
-    sales: 'sales@konversi.io',
-    ads: 'ads@konversi.io',
-    support: 'support@konversi.io',
+    sales: env.VITE_BRAND_EMAIL_SALES || 'sales@konversi.io',
+    ads: env.VITE_BRAND_EMAIL_ADS || 'ads@konversi.io',
+    support: env.VITE_BRAND_EMAIL_SUPPORT || 'support@konversi.io',
   },
-  downloadPrefix: 'konversi',
+  downloadPrefix: env.VITE_BRAND_DOWNLOAD_PREFIX || 'konversi',
+};
+
+// AdSense - set di Cloudflare Pages env vars sebelum build.
+export const ADSENSE = {
+  publisherId: env.VITE_ADSENSE_PUBLISHER_ID || '',
+  slots: {
+    'header-leaderboard': env.VITE_ADSENSE_SLOT_HEADER || '',
+    'mid-square-left': env.VITE_ADSENSE_SLOT_MID_LEFT || '',
+    'mid-square-right': env.VITE_ADSENSE_SLOT_MID_RIGHT || '',
+    'footer-leaderboard': env.VITE_ADSENSE_SLOT_FOOTER || '',
+  },
 };
 
 export const PRO_PLAN = {
-  price: 'Rp 49.000 / bulan',
+  price: env.VITE_PRO_PRICE || 'Rp 49.000 / bulan',
   highlight: 'Tanpa iklan, multi-file, batch processing',
   features: [
     'Hapus seluruh iklan AdSense & banner sponsor',

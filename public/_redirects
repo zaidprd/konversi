@@ -1,0 +1,4 @@
+﻿# Cloudflare Pages - SPA fallback.
+# Semua path yang tidak match file static akan di-rewrite ke /index.html
+# agar React Router bisa handle routing di sisi client.
+/*    /index.html   200
